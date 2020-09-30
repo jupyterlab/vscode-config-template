@@ -24,6 +24,6 @@ A number of prompts will pop up. DO NOT CHANGE `vscode_config_path`. Answer the 
 
 - `Error: ".vscode" directory already exists`: you'll need to delete the existing `.vscode` dir at your project's root. You can force cookiecutter to overwrite the existing dir with:
 
-```bash
-cookiecutter gh:jupyterlab/debug-config-cookiecutter -f
-```
+  ```bash
+  cookiecutter gh:jupyterlab/debug-config-cookiecutter -f
+  ```

@@ -1,0 +1,8 @@
+node_modules/
+lib/
+.ipynb_checkpoints
+yarn.lock
+tsconfig.tsbuildinfo
+.history
+.idea/
+*.iml

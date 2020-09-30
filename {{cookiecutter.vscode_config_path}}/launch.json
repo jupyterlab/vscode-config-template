@@ -1,0 +1,117 @@
+{
+    // to debug jupyterlab running in a venv or conda env:
+    //   - set up Python env in your workspace as per https://code.visualstudio.com/docs/python/environments
+    //   - add an "envFile" prop to each backend config pointing to .vscode/debug.env
+    //   - configure the .vscode/debug.env file as needed
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "jlab backend",
+            "type": "python",
+            "request": "launch",
+
+            "args": [
+                "--notebook-dir=${env:HOME}",
+                "--no-browser",
+                "--NotebookApp.token=''",
+                "--port=9999"
+            ],
+            "justMyCode": false,
+            "module": "jupyterlab.labapp",
+
+            {% if cookiecutter.has_envfile.lower().startswith('y') -%}
+            "envFile": "${workspaceFolder}/{{ cookiecutter.vscode_config_path }}/debug.env",
+            {%- else -%}
+            // set environment variables for this config
+            // "envFile": "${workspaceFolder}/.vscode/debug.env",
+            {%- endif %}
+        },
+        {
+            "name": "jlab backend (watch)",
+            "type": "python",
+            "request": "launch",
+
+            "args": [
+                "--watch",
+                "--notebook-dir=${env:HOME}",
+                "--no-browser",
+                "--NotebookApp.token=''",
+                "--port=9999"
+            ],
+            "justMyCode": false,
+            "module": "jupyterlab.labapp",
+
+            {% if cookiecutter.has_envfile.lower().startswith('y') -%}
+            "envFile": "${workspaceFolder}/{{ cookiecutter.vscode_config_path }}/debug.env",
+            {%- else -%}
+            // set environment variables for this config
+            // "envFile": "${workspaceFolder}/.vscode/debug.env",
+            {%- endif %}
+        },
+        {
+            "name": "jlab frontend",
+            "type": "chrome",
+            "request": "launch",
+
+            "sourceMapPathOverrides": {
+                // may need to adjust path on left hand side, depending on how your src maps are set up
+                "webpack:///./node_modules/{{ cookiecutter.project_name }}/*": "${webRoot}/*"
+            },
+            "timeout": 180000,
+            "url": "http://localhost:9999",
+            // set webroot to the parent dir of your project's top level package.json
+            "webRoot": "${workspaceFolder}",
+
+            {% if cookiecutter.chrome_bin_path -%}
+            "runtimeExecutable": "{{ cookiecutter.chrome_bin_path }}",
+            {%- else -%}
+            // debug using a specific copy of chrome/chromium
+            // "runtimeExecutable": "<path-to-your-chrome-or-chromium>",
+            {%- endif %}
+        },
+    ],
+    "compounds": [
+        {
+            "name": "jlab all",
+            "configurations": [
+                "jlab backend",
+                "jlab frontend"
+            ]
+        },
+        {
+            "name": "jlab all (watch)",
+            "configurations": [
+                "jlab backend (watch)",
+                "jlab frontend"
+            ]
+        }
+    ]
+
+    // some extra configurations, useful for troubleshooting
+    // jupyter-related vscode debug configs
+    //
+    // "configurations": [
+    //     {
+    //         "name": "(troubleshoot) jupyter paths",
+    //         "type": "python",
+    //         "request": "launch",
+    //         "args": [
+    //             "--paths",
+    //         ],
+    //         "justMyCode": false,
+    //         "module": "jupyter_core.command",
+    //         "envFile": "${workspaceFolder}/.vscode/jupyterlab_venv.env",
+    //     },
+    //     {
+    //         "name": "(troubleshoot) jupyter serverextensions",
+    //         "type": "python",
+    //         "request": "launch",
+    //         "args": [
+    //             "list",
+    //         ],
+    //         "justMyCode": false,
+    //         "module": "notebook.serverextensions",
+    //         "envFile": "${workspaceFolder}/.vscode/jupyterlab_venv.env",
+    //     }
+    // ]
+}

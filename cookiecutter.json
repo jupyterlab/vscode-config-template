@@ -1,0 +1,7 @@
+{
+    "project_name": "myextension",
+    "has_envfile": "n",
+    "virtual_env_root": "",
+    "chrome_bin_path": "",
+    "vscode_config_path": ".vscode"
+}

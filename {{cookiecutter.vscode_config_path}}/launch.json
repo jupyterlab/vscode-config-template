@@ -10,13 +10,16 @@
             "type": "python",
             "request": "launch",
             "args": [
-                "--notebook-dir={{ cookiecutter.notebook_dir }}",
+                "--notebook-dir={{ cookiecutter.notebooks_dir }}",
                 "--no-browser",
                 "--NotebookApp.token=''",
                 "--port=9999"
             ],
             "justMyCode": false,
             "module": "jupyterlab.labapp",
+            "presentation": {
+                "hidden": true
+            },
             {% if cookiecutter.has_envfile.lower().startswith('y') -%}
             "envFile": "${workspaceFolder}/{{ cookiecutter.vscode_config_path }}/debug.env"
             {%- endif %}
@@ -27,13 +30,16 @@
             "request": "launch",
             "args": [
                 "--watch",
-                "--notebook-dir={{ cookiecutter.notebook_dir }}",
+                "--notebook-dir={{ cookiecutter.notebooks_dir }}",
                 "--no-browser",
                 "--NotebookApp.token=''",
                 "--port=9999"
             ],
             "justMyCode": false,
             "module": "jupyterlab.labapp",
+            "presentation": {
+                "hidden": true
+            },
             {% if cookiecutter.has_envfile.lower().startswith('y') -%}
             "envFile": "${workspaceFolder}/{{ cookiecutter.vscode_config_path }}/debug.env"
             {%- endif %}
@@ -46,6 +52,9 @@
             "url": "http://localhost:9999",
             // set webroot to the parent dir of your project's top level package.json
             "webRoot": "${workspaceFolder}",
+            "presentation": {
+                "hidden": true
+            },
             {% if cookiecutter.chrome_bin_path -%}
             "runtimeExecutable": "{{ cookiecutter.chrome_bin_path }}",
             {%- endif %}
@@ -67,32 +76,4 @@
             ]
         }
     ]
-
-    // some extra configurations, useful for troubleshooting
-    // jupyter-related vscode debug configs
-    //
-    // "configurations": [
-    //     {
-    //         "name": "(troubleshoot) jupyter paths",
-    //         "type": "python",
-    //         "request": "launch",
-    //         "args": [
-    //             "--paths",
-    //         ],
-    //         "justMyCode": false,
-    //         "module": "jupyter_core.command",
-    //         "envFile": "${workspaceFolder}/.vscode/jupyterlab_venv.env",
-    //     },
-    //     {
-    //         "name": "(troubleshoot) jupyter serverextensions",
-    //         "type": "python",
-    //         "request": "launch",
-    //         "args": [
-    //             "list",
-    //         ],
-    //         "justMyCode": false,
-    //         "module": "notebook.serverextensions",
-    //         "envFile": "${workspaceFolder}/.vscode/jupyterlab_venv.env",
-    //     }
-    // ]
 }

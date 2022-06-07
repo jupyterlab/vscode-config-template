@@ -3,5 +3,6 @@
     "has_envfile": "n",
     "virtual_env_root": "",
     "chrome_bin_path": "",
-    "vscode_config_path": ".vscode"
+    "vscode_config_path": ".vscode",
+    "notebook_dir": "notebooks"
 }

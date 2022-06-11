@@ -2,7 +2,6 @@
 import json
 import os
 import shutil
-import sys
 from pathlib import Path
 
 PROJECT_DIRECTORY = Path.cwd()
@@ -57,6 +56,7 @@ def create_notebooks_dir():
     if not os.path.isdir(notebooks_dir):
         os.makedirs(notebooks_dir)
 
+
 def copy_webpack_config():
     shutil.move(
         os.path.join(str(PROJECT_DIRECTORY), "webpack.config.js"), 
@@ -65,8 +65,12 @@ def copy_webpack_config():
 
 
 if __name__ == "__main__":
-    update_package_json()
-    update_tsconfig()
-    copy_webpack_config()
+    if os.path.exists(PROJECT_DIRECTORY.parent / 'package.json'):
+        update_package_json()
+        update_tsconfig()
+        copy_webpack_config()
+    else:
+        os.remove(PROJECT_DIRECTORY / "webpack.config.js")
+
     create_notebooks_dir()
 

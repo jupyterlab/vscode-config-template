@@ -1,43 +1,21 @@
-# #!/usr/bin/env python
-# import os
-# from pathlib import Path
+#!/usr/bin/env python
+import os
+from pathlib import Path
 
-# PROJECT_DIRECTORY = Path.cwd()
-
-
-# def remove_path(path):
-#     if path.is_file():
-#         path.unlink()
-#     elif path.is_dir():
-#         for f in path.iterdir():
-#             remove_path(f)
-#         path.rmdir()
+PROJECT_DIRECTORY = Path.cwd()
 
 
-# if __name__ == "__main__":
+def create_notebooks_dir():
+    notebooks_dir = "{{cookiecutter.notebooks_dir}}"
+    if notebooks_dir:
+        notebooks_dir = Path(notebooks_dir)
+        if not notebooks_dir.is_absolute():
+            notebooks_dir = PROJECT_DIRECTORY.parent / notebooks_dir
 
-#     if not "{{ cookiecutter }}".lower().startswith("y"):
-#         for f in (
-#             "{{ cookiecutter }}",
-#             "jupyter-config",
-#             "MANIFEST.in",
-#             "pyproject.toml",
-#             "setup.py",
-#             "src/{{ cookiecutter }}.ts",
-#         ):
-#             remove_path(PROJECT_DIRECTORY / f)
-#     else:
-#         if "-" in "{{ cookiecutter }}":
-#             for f in (
-#                 "{{ cookiecutter }}",
-#                 "jupyter-config/{{ cookiecutter }}.json",
-#             ):
-#                 absolute_f = PROJECT_DIRECTORY / f
-#                 absolute_f.rename(absolute_f.parent / absolute_f.name.replace("-", "_"))
-#         if "_" in "{{ cookiecutter }}":
-#             for f in ("src/{{ cookiecutter }}.ts", ):
-#                 absolute_f = PROJECT_DIRECTORY / f
-#                 absolute_f.rename(absolute_f.parent / absolute_f.name.replace("_", ""))
+        if not notebooks_dir.is_dir():
+            notebooks_dir.mkdir(parents=True)
 
-#     if not "{{ cookiecutter }}".lower().startswith("y"):
-#         remove_path(PROJECT_DIRECTORY / "binder")
+
+if __name__ == "__main__":
+    create_notebooks_dir()
+

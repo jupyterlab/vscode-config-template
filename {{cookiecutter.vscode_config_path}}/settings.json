@@ -1,6 +1,5 @@
 {
     {% if cookiecutter.virtual_env_root -%}
     "python.defaultInterpreterPath": "{{ cookiecutter.virtual_env_root }}/bin/python"
-    {%- else -%}
     {%- endif %}
 }

@@ -1,0 +1,16 @@
+_min_copier_version: "7.1.0"
+_subdirectory: template
+
+vscode_config_path:
+  type: str
+  help: "Path to VS Code configuration"
+  default: ".vscode"
+virtual_env_root:
+  type: str
+  default: ""
+has_envfile:
+  type: bool
+  default: no
+notebooks_dir:
+  type: str
+  default: "notebooks"

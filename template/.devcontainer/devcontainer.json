@@ -22,7 +22,6 @@
             "extensions": [
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
-                "firefox-devtools.vscode-firefox-debug",
                 "meganrogge.template-string-converter",
                 "ms-python.python"
             ]

@@ -19,8 +19,8 @@
             "module": "jupyterlab.labapp",
             "presentation": {
                 "hidden": true
-            }{% if has_envfile -%},
-            "envFile": "${workspaceFolder}/{{ vscode_config_path }}/debug.env"{%- endif %}
+            }{% if virtual_env_root -%},
+            "envFile": "${workspaceFolder}/.vscode/debug.env"{%- endif %}
         },
         {
             "name": "JupyterLab in Chrome",
@@ -33,23 +33,6 @@
             "presentation": {
                 "hidden": true
             }
-        },
-        {
-            "name": "JupyterLab in Firefox",
-            "type": "firefox",
-            "request": "launch",
-            "reAttach": false,
-            "url": "http://localhost:9999/lab",
-            "pathMappings": [
-                {
-                "url": "webpack://${workspaceFolderBasename}/",
-                "path": "${workspaceFolder}/"
-                }
-            ],
-            "webRoot": "${workspaceFolder}",
-            "presentation": {
-                "hidden": true
-            }
         }
     ],
     "compounds": [
@@ -58,13 +41,6 @@
             "configurations": [
                 "JupyterLab backend",
                 "JupyterLab in Chrome"
-            ]
-        },
-        {
-            "name": "Debug JupyterLab with Firefox",
-            "configurations": [
-                "JupyterLab backend",
-                "JupyterLab in Firefox"
             ]
         }
     ]

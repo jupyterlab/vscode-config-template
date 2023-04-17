@@ -1,16 +1,14 @@
 _min_copier_version: "7.1.0"
 _subdirectory: template
+_tasks:
+  # Create notebooks_dir
+  - ["{{ _copier_python }}", "-c", "from pathlib import Path; Path('{{ notebooks_dir }}').mkdir(parents=True, exist_ok=True)"]
 
-vscode_config_path:
-  type: str
-  help: "Path to VS Code configuration"
-  default: ".vscode"
-virtual_env_root:
-  type: str
-  default: ""
-has_envfile:
-  type: bool
-  default: no
 notebooks_dir:
   type: str
+  help: Directory to start JupyterLab with in
   default: "notebooks"
+virtual_env_root:
+  type: str
+  help: Python virtual env prefix (leave empty if you use Python extension)
+  default: ""

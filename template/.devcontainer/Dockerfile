@@ -4,9 +4,8 @@ FROM mcr.microsoft.com/devcontainers/miniconda:0-3
 COPY environment.yml /tmp/conda-tmp/
 RUN /opt/conda/bin/conda config --add channels conda-forge \
     && /opt/conda/bin/conda config --remove channels defaults \
-    && /opt/conda/bin/conda -y mamba
-RUN umask 0002 && /opt/conda/bin/mamba env update -n base -f /tmp/conda-tmp/environment.yml \
-    && rm -rf /tmp/conda-tmp
+    && /opt/conda/bin/conda install -y mamba
+RUN umask 0002 && /opt/conda/bin/mamba env update -n base -f /tmp/conda-tmp/environment.yml
 
 # [Optional] Uncomment to install a different version of Python than the default
 # RUN mamba install -y python=3.6 \

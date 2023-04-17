@@ -1,6 +1,7 @@
 # Extension development environment
 channels:
   - conda-forge
+  - conda-forge/label/jupyterlab_beta
 
 dependencies:
   # runtime dependencies

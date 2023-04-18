@@ -1,0 +1,5 @@
+{
+    {% if virtual_env_root -%}
+    "python.defaultInterpreterPath": "{{ virtual_env_root }}/bin/python"
+    {%- endif %}
+}

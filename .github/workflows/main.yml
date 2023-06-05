@@ -10,7 +10,7 @@ on:
     - cron: "0 0 * * *"
 
 jobs:
-  names:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,5 +34,5 @@ jobs:
           set -eux
           mkdir dummy
           python -m copier copy -a .copier-answer.vscode.yml -l --vcs-ref HEAD --UNSAFE . dummy
-          cat .copier-answer.vscode.yml
+          cat dummy/.copier-answer.vscode.yml
           pushd dummy

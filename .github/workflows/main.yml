@@ -33,6 +33,6 @@ jobs:
         run: |
           set -eux
           mkdir dummy
-          python -m copier -a .copier-answer.vscode.yml copy -l --vcs-ref HEAD --UNSAFE . dummy
+          python -m copier copy -a .copier-answer.vscode.yml -l --vcs-ref HEAD --UNSAFE . dummy
           cat .copier-answer.vscode.yml
           pushd dummy

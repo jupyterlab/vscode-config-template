@@ -27,11 +27,19 @@ conda install copier
 
 2. Navigate to the root of your Jupyter project, then run
 
+For copier v8
+
+```bash
+copier copy -a .copier-answer.vscode.yml --UNSAFE https://github.com/jupyterlab/vscode-config-template .
+```
+
+> The `--UNSAFE` flag is required as explained in the [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe).
+
+For copier v7
+
 ```bash
 copier -a .copier-answer.vscode.yml copy https://github.com/jupyterlab/vscode-config-template .
 ```
-
-> If you use copier v8+, you will need to pass the flag `--UNSAFE` (see [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe)).
 
 3. Answer the options questions
 
@@ -56,8 +64,16 @@ jlpm run watch
 
 To update the configuration to a newer version of the template, execute:
 
+For copier v8
+
+```bash
+copier update -a .copier-answer.vscode.yml --UNSAFE
+```
+
+> The `--UNSAFE` flag is required as explained in the [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe).
+
+For copier v7
+
 ```shell
 copier -a .copier-answer.vscode.yml update
 ```
-
-> If you use copier v8+, you will need to pass the flag `--UNSAFE` (see [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe)).

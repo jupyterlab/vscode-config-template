@@ -19,11 +19,19 @@ It will add:
 pip install copier
 ```
 
+or 
+
+```bash
+conda install copier
+```
+
 2. Navigate to the root of your Jupyter project, then run
 
 ```bash
 copier -a .copier-answer.vscode.yml copy https://github.com/jupyterlab/vscode-config-template .
 ```
+
+> If you use copier v8+, you will need to pass the flag `--UNSAFE` (see [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe)).
 
 3. Answer the options questions
 
@@ -51,3 +59,5 @@ To update the configuration to a newer version of the template, execute:
 ```shell
 copier -a .copier-answer.vscode.yml update
 ```
+
+> If you use copier v8+, you will need to pass the flag `--UNSAFE` (see [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe)).

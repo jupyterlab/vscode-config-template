@@ -7,7 +7,7 @@ code in Jupyter extension projects.
 It will add:
 
 - Debug configuration to debug your code in Visual Studio Code
-- Development container (can be used to develop within a container)
+- [recommended] Development container (can be used to develop within a container) - see [installation documentation](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## Setup Visual Studio Code for extensions
 

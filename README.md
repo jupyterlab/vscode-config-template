@@ -7,7 +7,7 @@ code in Jupyter extension projects.
 It will add:
 
 - Debug configuration to debug your code in Visual Studio Code
-- Development container (can be used to develop within a container)
+- [recommended] Development container (can be used to develop within a container) - see [installation documentation](https://code.visualstudio.com/docs/devcontainers/containers#_installation)
 
 ## Setup Visual Studio Code for extensions
 
@@ -19,7 +19,23 @@ It will add:
 pip install copier
 ```
 
+or 
+
+```bash
+conda install copier
+```
+
 2. Navigate to the root of your Jupyter project, then run
+
+For copier v8
+
+```bash
+copier copy -a .copier-answer.vscode.yml --UNSAFE https://github.com/jupyterlab/vscode-config-template .
+```
+
+> The `--UNSAFE` flag is required as explained in the [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe).
+
+For copier v7
 
 ```bash
 copier -a .copier-answer.vscode.yml copy https://github.com/jupyterlab/vscode-config-template .
@@ -47,6 +63,16 @@ jlpm run watch
 ## Update configuration
 
 To update the configuration to a newer version of the template, execute:
+
+For copier v8
+
+```bash
+copier update -a .copier-answer.vscode.yml --UNSAFE
+```
+
+> The `--UNSAFE` flag is required as explained in the [documentation](https://copier.readthedocs.io/en/stable/configuring/#unsafe).
+
+For copier v7
 
 ```shell
 copier -a .copier-answer.vscode.yml update

@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install "copier>=8.0.0"
+          python -m pip install "copier>=8.0.0" "pydantic<2.0.0"
 
       - name: Execute the template
         run: |
